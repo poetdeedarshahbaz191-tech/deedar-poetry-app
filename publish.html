@@ -68,7 +68,30 @@ button{
 </div>
 
 <script>
+document.getElementById("publishBtn").addEventListener("click", function () {
 
+    let title = document.getElementById("title").value.trim();
+    let poem = document.getElementById("poem").value.trim();
+
+    if (title === "" || poem === "") {
+        alert("Please enter both title and poem.");
+        return;
+    }
+
+    let poems = JSON.parse(localStorage.getItem("poems")) || [];
+
+    poems.push({
+        title: title,
+        poem: poem
+    });
+
+    localStorage.setItem("poems", JSON.stringify(poems));
+
+    alert("Poem published successfully!");
+
+    document.getElementById("title").value = "";
+    document.getElementById("poem").value = "";
+});
 </script>
 
 </body>
