@@ -72,8 +72,8 @@ button{
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyAEtsOoIe3tll0_hvovC42j9ujcb8Wavu4",
   authDomain: "poet--deedar---shahbaz.firebaseapp.com",
@@ -102,7 +102,7 @@ try {
     await addDoc(collection(db, "poems"), {
         title: title,
         poem: poem,
-        date: new Date()
+      date: serverTimestamp()
     });
 
     alert("Poem Published Successfully!");
